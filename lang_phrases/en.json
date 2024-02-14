@@ -1,3 +1,6 @@
 {
-  "welcome": "Welcome, it`s a News bot\nChoose interface language:"
+  "welcome": "Welcome, it`s a News bot\nChoose interface language:",
+  "set_themes": "Choose which country's news you are interested in:",
+  "back": "Back",
+  "chosen_language_interface": "Thanks, now the interface language will be: {}"
 }

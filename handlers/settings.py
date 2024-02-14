@@ -41,8 +41,17 @@ async def process_hi_command(message):
 
 
 async def choose_language(message: types.message, state: FSMContext):
+    await bot.answer_callback_query(message.id)
     language = message.data[len("choose_lang_"):]
-    print(language)
+    user_id = message.from_user.id
+
+    lang_manager.change_user_interface_language(user_id, language)
+
+    logging.info(f"User: {user_id} set new interface language: {language}")
+
+    text = str(lang_manager.phrases[language]["chosen_language_interface"]).format(lang_manager.country_to_emoji[language])
+
+    await bot.send_message(chat_id=user_id, text=text)
 
 
 def register_handlers_settings(dp: Dispatcher):
