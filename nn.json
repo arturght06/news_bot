@@ -1,0 +1,119 @@
+{
+  "Dialog": {
+    "name": "NN",
+    "date": "2024-02-10T15:39:09Z",
+    "draft": {
+      "type": "Draft",
+      // Details of the Draft object (specific details not provided)
+    },
+    "message": {
+      "id": 6013,
+      "peer_id": {
+        "channel_id": 1222869173
+      },
+      "date": "2024-02-10T15:39:09Z",
+      "message": "",
+      "out": false,
+      "mentioned": false,
+      "media_unread": false,
+      "silent": false,
+      "post": true,
+      "from_scheduled": false,
+      "legacy": false,
+      "edit_hide": false,
+      "pinned": false,
+      "noforwards": false,
+      "invert_media": false,
+      "from_id": null,
+      "fwd_from": null,
+      "via_bot_id": null,
+      "reply_to": null,
+      "media": {
+        "spoiler": false,
+        "photo": {
+          "id": 5348331283048158204,
+          "access_hash": -6090951191721302820,
+          "file_reference": "02H...A1r",
+          "date": "2024-02-10T12:16:19Z",
+          "sizes": [
+            {
+              "type": "i",
+              "bytes": "..."
+            },
+            {
+              "type": "m",
+              "w": 320,
+              "h": 194,
+              "size": 19835
+            },
+            {
+              "type": "x",
+              "w": 800,
+              "h": 486,
+              "sizes": [6040, 22922, 55626, 76762, 84790]
+            }
+          ],
+          "dc_id": 2,
+          "has_stickers": false,
+          "video_sizes": []
+        },
+        "ttl_seconds": null
+      },
+      "reply_markup": null,
+      "entities": [],
+      "views": 76245,
+      "forwards": 294,
+      "replies": null,
+      "edit_date": null,
+      "post_author": null,
+      "grouped_id": 13660636397237082,
+      "reactions": null,
+      "restriction_reason": [],
+      "ttl_period": null
+    },
+    "entity": {
+      "id": 1222869173,
+      "title": "NN",
+      "photo": {
+        "photo_id": 5312545581178138989,
+        "dc_id": 2,
+        "has_video": false,
+        "stripped_thumb": "010808bbfbcd...b9b1"
+      },
+      "date": "2023-04-03T11:46:34Z",
+      "creator": false,
+      "left": false,
+      "broadcast": true,
+      "verified": true,
+      "megagroup": false,
+      "restricted": false,
+      "signatures": false,
+      "min": false,
+      "scam": false,
+      "has_link": false,
+      "has_geo": false,
+      "slowmode_enabled": false,
+      "call_active": false,
+      "call_not_empty": false,
+      "fake": false,
+      "gigagroup": false,
+      "noforwards": false,
+      "join_to_send": false,
+      "join_request": false,
+      "forum": false,
+      "stories_hidden": false,
+      "stories_hidden_min": false,
+      "stories_unavailable": true,
+      "access_hash": 5482912108609183498,
+      "username": "naebnet",
+      "restriction_reason": [],
+      "admin_rights": null,
+      "banned_rights": null,
+      "default_banned_rights": null,
+      "participants_count": 1182499,
+      "usernames": [],
+      "stories_max_id": null,
+      "color": null
+    }
+  }
+}

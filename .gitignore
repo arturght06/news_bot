@@ -1,0 +1,4 @@
+database.ini
+*.session
+*.session-journal
+venv
