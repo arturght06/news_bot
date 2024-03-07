@@ -1,6 +1,32 @@
 {
   "welcome": "Welcome, it`s a News bot\nChoose interface language:",
+  "first_choosing_theme": "Thanks, now the interface language will be: {}\nNow let's choose which country's news you're interested in:",
   "set_themes": "Choose which country's news you are interested in:",
+  "choose_themes": "Country: {}\nSelect the news topics you are interested in: ",
   "back": "Back",
-  "chosen_language_interface": "Thanks, now the interface language will be: {}"
+  "chosen_language_interface": "Thanks, now the interface language will be: {}",
+  "themes": {
+    "world": {
+      "all": "All\uD83D\uDDC2",
+      "politic": "Politic"
+    },
+    "uk": {
+      "all": "All\uD83D\uDDC2",
+      "war": "War",
+      "sport": "Sport",
+      "politic": "Politic",
+      "culture": "Culture",
+      "mobilization": "Mobilization",
+      "medicine": "Medicine"
+    },
+    "ru": {
+      "all": "All\uD83D\uDDC2",
+      "war": "War",
+      "sport": "Sport",
+      "politic": "Politic",
+      "culture": "Culture",
+      "mobilization": "Mobilization",
+      "medicine": "Medicine"
+    }
+  }
 }

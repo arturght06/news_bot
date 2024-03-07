@@ -2,24 +2,50 @@ import json
 import logging
 import os
 
+from sqlalchemy import Column
+
+from db.UserLanguageUtils import UserLanguageUtils
+from db.models import UserLanguage
+
 folder_path = "lang_phrases"
-short_to_long_file = "country_to_emoji.txt"
+country_to_emoji_file = "country_to_emoji.txt"
+country_to_long_file = "country_to_name.json"
 
 
 class LanguageManager:
     """language manager for user interface"""
-    def __init__(self, db_client):
-        self.db_client = db_client
+    def __init__(self, user_lang_manager: UserLanguageUtils):
+        self.user_lang_manager: UserLanguageUtils = user_lang_manager
         logging.info("> Start initializing LanguageManager object")
         self._langs = None
         self._lang_files = None
         self._phrases = None
         self._country_to_emoji = None
+        self._country_to_name = None
+
+    @property
+    def country_to_name(self):
+        if self._country_to_name is None:
+            if os.path.exists(country_to_long_file):
+                with open(country_to_long_file, encoding="utf8") as file:
+                    file_data = file.read()
+
+                    json_data = json.loads(file_data)
+
+                    self._country_to_name = json_data
+            else:
+                logging.info(f"File {country_to_long_file} does not exist")
+
+        return self._country_to_name
+
+    @country_to_name.setter
+    def country_to_name(self, value):
+        self._country_to_name = value
 
     @property
     def country_to_emoji(self):
         if self._country_to_emoji is None:
-            file_path = folder_path + "\\" + short_to_long_file
+            file_path = folder_path + "\\" + country_to_emoji_file
             # check if folder exists
             if os.path.exists(file_path):
                 with open(file_path, encoding="utf8") as file:
@@ -110,35 +136,18 @@ class LanguageManager:
     def lang_files(self, value):
         self._lang_files = value
 
-    def change_user_interface_language(self, user_id, new_lang):
-        current_languages = self.db_client.get_line_from_table("user_languages", user_id)
-
-        if current_languages is None:
-            return False
-
-        data = [user_id, current_languages[1], current_languages[2], new_lang, current_languages[4]]
-
-        self.db_client.set_user_languages(data)
-
-    def get_user_interface_language(self, user_id):
-        current_languages = self.db_client.get_line_from_table("user_languages", user_id)
-
-        langs = [lang.split(".")[0] for lang in self.lang_files]
-
-        if current_languages is None:
-            return False
-        elif current_languages[3] is None and current_languages[1] in langs:
-            return current_languages[1]
+    async def set_user_interface_language(self, user_id: int, new_lang: str) -> None:
+        if new_lang in self.langs:
+            insert_data: UserLanguage = UserLanguage(id=user_id, language_interface=new_lang)
         else:
-            return current_languages[3]
+            insert_data: UserLanguage = UserLanguage(id=user_id, language_interface="en")
 
+        await self.user_lang_manager.set(insert_data)
 
-# lang_manager = LanguageManager()
-# print(lang_manager.phrases)
-# data = [1, "en", None, None, None]
-#
-# db_client.set_user_languages(data)
-# lang_manager.change_user_interface_language(1, "ru")
-# user_lang = lang_manager.get_user_interface_language(1)
-#
-# print(lang_manager.phrases[user_lang]["welcome"])
+    async def get_user_interface_language(self, user_id: int) -> str | bool:
+        current_languages: UserLanguage = await self.user_lang_manager.get(user_id)
+
+        if current_languages is None:
+            return False
+        else:
+            return str(current_languages.language_interface)

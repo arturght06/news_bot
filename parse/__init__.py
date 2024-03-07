@@ -1,1 +1,1 @@
-from parse import tgposts
+from parse import parser
